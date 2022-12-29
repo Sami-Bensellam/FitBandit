@@ -1,0 +1,291 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DietPlanController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.DietPlans</a>
+</div>
+
+<h1>Coverage Summary for Class: DietPlanController (coms309.DietPlans)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DietPlanController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73.6%
+  </span>
+  <span class="absValue">
+    (39/53)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.DietPlans;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import coms309.Users.UserRepository;
+&nbsp;import io.swagger.annotations.ApiOperation;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;import org.springframework.web.bind.annotation.PutMapping;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RestController;
+&nbsp;import coms309.Users.User;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * @author Sami Bensellam
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;@RestController
+&nbsp;//@RequestMapping(&quot;/api/v1&quot;)
+<b class="fc">&nbsp;public class DietPlanController {</b>
+&nbsp;    @Autowired
+&nbsp;    DietPlanRepository dietPlanRepository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    UserRepository userRepository;
+&nbsp;
+<b class="fc">&nbsp;    private String success = &quot;{\&quot;message\&quot;:\&quot;success\&quot;}&quot;;</b>
+<b class="fc">&nbsp;    private String failure = &quot;{\&quot;message\&quot;:\&quot;failure\&quot;}&quot;;</b>
+&nbsp;    @ApiOperation(value = &quot;returns all dietplans &quot;, response = Iterable.class)
+&nbsp;    /**
+&nbsp;     * returns all dietplans
+&nbsp;     * @return DietPlan List
+&nbsp;     */
+&nbsp;    @GetMapping(path = &quot;/diets&quot;)
+&nbsp;    List&lt;DietPlan&gt; getAllDiets(){
+<b class="fc">&nbsp;        return dietPlanRepository.findAll();</b>
+&nbsp;    }
+&nbsp;    @ApiOperation(value = &quot;gets a specific diet from the diets table &quot;, response = Iterable.class)
+&nbsp;    /**
+&nbsp;     * gets a specific diet from the diets table
+&nbsp;     * @param id
+&nbsp;     * @return DietPlan
+&nbsp;     */
+&nbsp;    @GetMapping(path = &quot;/diets/{id}&quot;)
+&nbsp;    DietPlan getDietPlanById( @PathVariable int id){
+<b class="fc">&nbsp;        return dietPlanRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;    @ApiOperation(value = &quot;gets Dietplan of user &quot;, response = Iterable.class)
+&nbsp;    /**
+&nbsp;     * gets Dietplan of user
+&nbsp;     * @param id
+&nbsp;     * @return returns DietPlan
+&nbsp;     */
+&nbsp;    @GetMapping(path = &quot;/diets/{id}/diets&quot;)
+&nbsp;    DietPlan getUserDiets( @PathVariable int id){
+<b class="nc">&nbsp;        return userRepository.findById(id).getDietPlan();</b>
+&nbsp;    }
+&nbsp;    @ApiOperation(value = &quot;creates empty diet &quot;, response = Iterable.class)
+&nbsp;    /**
+&nbsp;     * creates empty diet
+&nbsp;     * @param diet
+&nbsp;     * @return success if successful
+&nbsp;     */
+&nbsp;    @PostMapping(path = &quot;/diets&quot;)
+&nbsp;    String createDiet(DietPlan diet){
+<b class="fc">&nbsp;        if (diet == null)</b>
+<b class="nc">&nbsp;            return failure;</b>
+<b class="fc">&nbsp;        dietPlanRepository.save(diet);</b>
+<b class="fc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;//    @PostMapping(path = &quot;/users/{id}/diets/{p}&quot;)
+&nbsp;//    String createDietPlan(@PathVariable int id, @PathVariable String p){
+&nbsp;//        User thisUser1 = userRepository.findById(id);
+&nbsp;//        if (p == &quot;loseWeight&quot;){
+&nbsp;//            DietPlan dietLose = new DietPlan(1800, 80, 50, 30,2, thisUser1);
+&nbsp;//            dietPlanRepository.save(dietLose);
+&nbsp;//            userRepository.findById(id).addDiets(dietLose);
+&nbsp;//        } else if (p == &quot;gainWeight&quot;) {
+&nbsp;//            DietPlan dietGain = new DietPlan(2300, 150, 80, 50, 2, thisUser1);
+&nbsp;//            dietPlanRepository.save(dietGain);
+&nbsp;//            userRepository.findById(id).addDiets(dietGain);
+&nbsp;//        } else {
+&nbsp;//            DietPlan dietMaintain = new DietPlan(2000, 100, 60,40, 2, thisUser1);
+&nbsp;//            dietPlanRepository.save(dietMaintain);
+&nbsp;//            userRepository.findById(id).addDiets(dietMaintain);
+&nbsp;//        }
+&nbsp;//        return success;
+&nbsp;//    }
+&nbsp;@ApiOperation(value = &quot;changes dietplan by id &quot;, response = Iterable.class)
+&nbsp;    /**
+&nbsp;     * changes Dietplan by id
+&nbsp;     * @param id
+&nbsp;     * @param request
+&nbsp;     * @return returns the changed dietplan
+&nbsp;     */
+&nbsp;    @PutMapping(&quot;/diets/{id}&quot;)
+&nbsp;    DietPlan updateDiet(@PathVariable int id, @RequestBody DietPlan request) {
+<b class="fc">&nbsp;        DietPlan dietChange = dietPlanRepository.findById(id);</b>
+<b class="fc">&nbsp;        if (dietChange == null)</b>
+<b class="nc">&nbsp;            return null;</b>
+<b class="fc">&nbsp;        dietPlanRepository.save(request);</b>
+<b class="fc">&nbsp;        return dietPlanRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     *creates dietplan based off of user information
+&nbsp;     * @param id
+&nbsp;     * @return newly created dietplan
+&nbsp;     */
+&nbsp;    @ApiOperation(value = &quot;creates dietplan based off of user information &quot;, response = Iterable.class)
+&nbsp;    @PostMapping(path = &quot;/users/{id}/dietcreate&quot;)
+&nbsp;    DietPlan createDietPlan(@PathVariable int id){
+&nbsp;
+&nbsp;//        HEIGHT IN INCHES
+&nbsp;//        WEIGHT IN LBS
+&nbsp;//        AGE IN YEARS
+&nbsp;//        GENDER TRUE = MALE
+&nbsp;//        GENDER FALSE = FEMALE
+&nbsp;
+<b class="fc">&nbsp;        User thisuser = userRepository.findById(id);</b>
+<b class="fc">&nbsp;        int weight = thisuser.getWeight();</b>
+<b class="fc">&nbsp;        int height = thisuser.getHeight();</b>
+<b class="fc">&nbsp;        int age = thisuser.getAge();</b>
+<b class="fc">&nbsp;        int gain = thisuser.getGain();</b>
+<b class="fc">&nbsp;        boolean gender = thisuser.getGender();</b>
+<b class="fc">&nbsp;        int baseCalories = 0;</b>
+<b class="fc">&nbsp;        int targetCalories = 0;</b>
+<b class="fc">&nbsp;        int carbs = 0;</b>
+<b class="fc">&nbsp;        int fat = 0;</b>
+<b class="fc">&nbsp;        int protein = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;        if(gender){</b>
+<b class="nc">&nbsp;            baseCalories = (int)(66 + (6.2 * weight) + (12.7 * height) - (6.76 * age));</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="fc">&nbsp;            baseCalories = (int)(655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age));</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if(gain == 0){</b>
+<b class="nc">&nbsp;            targetCalories = (int)(baseCalories * 1- 400);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(gain == -1){</b>
+<b class="nc">&nbsp;            targetCalories = (int)(baseCalories * 1);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(gain == 1){</b>
+<b class="fc">&nbsp;            targetCalories = (int)(baseCalories * 1 + 400);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;//        CARBS IN GRAMS
+&nbsp;//        FAT IN GRAMS
+&nbsp;//        PROTEIN IN GRAMS
+&nbsp;
+<b class="fc">&nbsp;        if(gain == 1){</b>
+<b class="fc">&nbsp;            carbs = (int)((targetCalories * 0.4)/4);</b>
+<b class="fc">&nbsp;            fat = (int)((targetCalories * 0.35)/8);</b>
+<b class="fc">&nbsp;            protein = (int)((targetCalories * 0.25)/4);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        else if(gain == 0){</b>
+<b class="nc">&nbsp;            carbs = (int)((targetCalories * 0.4)/4);</b>
+<b class="nc">&nbsp;            fat = (int)((targetCalories * 0.3)/8);</b>
+<b class="nc">&nbsp;            protein = (int)((targetCalories * 0.30)/4);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        else if(gain == -1){</b>
+<b class="nc">&nbsp;            carbs = (int)((targetCalories * 0.3)/4);</b>
+<b class="nc">&nbsp;            fat = (int)((targetCalories * 0.25)/8);</b>
+<b class="nc">&nbsp;            protein = (int)((targetCalories * 0.45)/4);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        int waterIntake = (int)((weight/2) * 0.0295735296); //LITRES</b>
+<b class="fc">&nbsp;        DietPlan newPlan = new DietPlan(targetCalories, protein, carbs, fat, waterIntake, thisuser);</b>
+<b class="fc">&nbsp;        dietPlanRepository.save(newPlan);</b>
+<b class="fc">&nbsp;        thisuser.setDietPlan(newPlan);</b>
+<b class="fc">&nbsp;        userRepository.save(thisuser);</b>
+<b class="fc">&nbsp;        return newPlan;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

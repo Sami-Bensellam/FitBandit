@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Reply</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Replies</a>
+</div>
+
+<h1>Coverage Summary for Class: Reply (coms309.Replies)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Reply</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (4/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+  <span class="absValue">
+    (7/13)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Reply$HibernateProxy$1cwW0khu</td>
+  </tr>
+  <tr>
+    <td class="name">Reply$HibernateProxy$8Y1JdJMk</td>
+  </tr>
+  <tr>
+    <td class="name">Reply$HibernateProxy$FI6rvLHh</td>
+  </tr>
+  <tr>
+    <td class="name">Reply$HibernateProxy$KgAthVju</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (4/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+  <span class="absValue">
+    (7/13)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Replies;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.annotation.JsonIdentityReference;
+&nbsp;import com.fasterxml.jackson.annotation.JsonIgnore;
+&nbsp;import coms309.Users.User;
+&nbsp;import coms309.Threads.Thread;
+&nbsp;
+&nbsp;import javax.persistence.*;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * @author Sami Bensellam
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class Reply {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private int id;
+&nbsp;
+&nbsp;    private String txt;
+&nbsp;
+&nbsp;
+&nbsp;    @ManyToOne
+&nbsp;    @JsonIgnore
+&nbsp;    private User user;
+&nbsp;
+&nbsp;
+&nbsp;    @ManyToOne
+&nbsp;    @JsonIgnore
+&nbsp;    private Thread thread;
+&nbsp;
+<b class="fc">&nbsp;    public Reply(String txt, Thread thread,  User user) {</b>
+<b class="fc">&nbsp;        this.txt = txt;</b>
+<b class="fc">&nbsp;        this.user = user;</b>
+<b class="fc">&nbsp;        this.thread = thread;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Reply() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // =============================== Getters and Setters for each field ================================== //
+&nbsp;
+&nbsp;    public int getId(){
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(int id){
+<b class="nc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getTxt() {
+<b class="fc">&nbsp;        return txt;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Thread getThread() {
+<b class="nc">&nbsp;        return thread;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setThread(Thread thread) {
+<b class="nc">&nbsp;        this.thread = thread;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTxt(String txt) {
+<b class="nc">&nbsp;        this.txt = txt;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public User getUser(){
+<b class="nc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUser(User user){
+<b class="nc">&nbsp;        this.user = user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

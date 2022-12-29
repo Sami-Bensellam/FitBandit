@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/algorithm"
+        android:icon="@drawable/ic_baseline_adb_24"
+        android:title="Workout" />
+    <item
+        android:id="@+id/course"
+        android:icon="@drawable/ic_course"
+        android:title="Diet" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_account"
+        android:title="Profile" />
+</menu>

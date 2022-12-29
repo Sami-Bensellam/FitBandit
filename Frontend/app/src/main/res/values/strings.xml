@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Android_Test</string>
+    <string name="hello">HELLO</string>
+    <string name="world">WORLD</string>
+    <string name="button">BEGIN</string>
+    <string name="page2_title">PAGE 2</string>
+    <string name="workout">WORKOUT</string>
+    <string name="course">DIET</string>
+    <string name="profile">PROFILE</string>
+    <string name="login">LOGIN</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="firstName">FIRST NAME</string>
+    <string name="lastName">LAST NAME</string>
+    <string name="dateOfBirth">DATE OF BIRTH</string>
+    <string name="next">NEXT</string>
+    <string name="createAccount">CREATE ACCOUNT</string>
+    <string name="gender">GENDER</string>
+    <string name="weight">WEIGHT</string>
+    <string name="height">HEIGHT</string>
+    <string name="bodyType">BODY TYPE</string>
+    <string name="desiredWeight">GAIN/LOSE WEIGHT</string>
+    <string name="desiredMuscle">GAIN/MAINTAIN MUSCLE</string>
+    <string name="begin">BEGIN</string>
+    <string name="subscribe">SUBSCRIBE</string>
+    <string name="profileSearch">GO</string>
+    <string name="email">EMAIL</string>
+    <string name="forum">FORUM</string>
+    <string name="post">POST</string>
+
+    <string-array name="muscle_preference">
+        <item>Lose Weight</item>
+        <item>Maintain Weight</item>
+        <item>Gain Weight</item>
+    </string-array>
+
+    <string-array name="workout_options">
+        <item>Aerobics</item>
+        <item>Stationary Bike</item>
+        <item>Stationary Bike medium effort</item>
+        <item>dusting</item>
+        <item>gardening</item>
+        <item>grocery shopping</item>
+        <item>hiking</item>
+        <item>house cleaning</item>
+        <item>jogging</item>
+        <item>running 12 minute miles</item>
+        <item>running 10 minute miles</item>
+        <item>running 7.5 minute miles</item>
+        <item>laundry, including folding clothes</item>
+        <item>mowing the lawn</item>
+        <item>brisk walking</item>
+        <item>weightlifting</item>
+        <item>yoga</item>
+    </string-array>
+</resources>

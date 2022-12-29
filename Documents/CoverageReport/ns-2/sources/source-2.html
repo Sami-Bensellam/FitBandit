@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DayController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Days</a>
+</div>
+
+<h1>Coverage Summary for Class: DayController (coms309.Days)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DayController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (12/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Days;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.DeleteMapping;
+&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;import org.springframework.web.bind.annotation.PutMapping;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RestController;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * @author Sami Bensellam
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class DayController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    DayRepository dayRepository;
+&nbsp;
+<b class="fc">&nbsp;    private String success = &quot;{\&quot;message\&quot;:\&quot;success\&quot;}&quot;;</b>
+<b class="fc">&nbsp;    private String failure = &quot;{\&quot;message\&quot;:\&quot;failure\&quot;}&quot;;</b>
+&nbsp;
+&nbsp;    @GetMapping(path = &quot;/days&quot;)
+&nbsp;    List&lt;Day&gt; getAllDays(){
+<b class="fc">&nbsp;        return dayRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(path = &quot;/days/{id}&quot;)
+&nbsp;    Day getWeekById(@PathVariable int id){
+<b class="fc">&nbsp;        return dayRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(path = &quot;/days&quot;)
+&nbsp;    String createWeek(@RequestBody Day day){
+<b class="fc">&nbsp;        if (day == null)</b>
+<b class="nc">&nbsp;            return failure;</b>
+<b class="fc">&nbsp;        dayRepository.save(day);</b>
+<b class="fc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(path = &quot;/days/{id}&quot;)
+&nbsp;    Day updateDay(@PathVariable int id, @RequestBody Day request){
+<b class="fc">&nbsp;        Day day = dayRepository.findById(id);</b>
+<b class="fc">&nbsp;        if(day == null)</b>
+<b class="nc">&nbsp;            return null;</b>
+<b class="fc">&nbsp;        dayRepository.save(request);</b>
+<b class="fc">&nbsp;        return dayRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(path = &quot;/days/{id}&quot;)
+&nbsp;    String deleteDay(@PathVariable int id) {
+<b class="nc">&nbsp;        dayRepository.deleteById(id);</b>
+<b class="nc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

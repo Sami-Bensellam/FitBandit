@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/start2">
+
+    <activity
+        android:id="@+id/start2"
+        android:name="com.example.android_test.Start"
+        android:label="activity_start"
+        app:action="@string/button"
+        tools:layout="@layout/activity_start" />
+    <activity
+        android:id="@+id/page2"
+        android:name="com.example.android_test.Page2"
+        android:label="activity_page2"
+        tools:layout="@layout/activity_page2" />
+</navigation>

@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReplyController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Replies</a>
+</div>
+
+<h1>Coverage Summary for Class: ReplyController (coms309.Replies)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReplyController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57.1%
+  </span>
+  <span class="absValue">
+    (4/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    56%
+  </span>
+  <span class="absValue">
+    (14/25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Replies;
+&nbsp;
+&nbsp;import coms309.Threads.Thread;
+&nbsp;import coms309.Threads.ThreadRepository;
+&nbsp;import coms309.Users.User;
+&nbsp;import coms309.Users.UserRepository;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * @author Sami Bensellam
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;@RestController
+<b class="fc">&nbsp;public class ReplyController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    ReplyRepository replyRepository;
+&nbsp;    @Autowired
+&nbsp;    ThreadRepository threadRepository;
+&nbsp;    @Autowired
+&nbsp;    UserRepository userRepository;
+&nbsp;
+<b class="fc">&nbsp;    private String success = &quot;{\&quot;message\&quot;:\&quot;success\&quot;}&quot;;</b>
+<b class="fc">&nbsp;    private String failure = &quot;{\&quot;message\&quot;:\&quot;failure\&quot;}&quot;;</b>
+&nbsp;
+&nbsp;    @GetMapping(path = &quot;/replies&quot;)
+&nbsp;    List&lt;Reply&gt; getAllReplies(){
+<b class="fc">&nbsp;        return replyRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(path = &quot;/replies/{id}&quot;)
+&nbsp;    Reply getReplyById(@PathVariable int id){
+<b class="fc">&nbsp;        return replyRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(path = &quot;/replies&quot;)
+&nbsp;    String createReply(@RequestBody Reply reply){
+<b class="nc">&nbsp;        if (reply == null)</b>
+<b class="nc">&nbsp;            return failure;</b>
+<b class="nc">&nbsp;        replyRepository.save(reply);</b>
+<b class="nc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @PostMapping(path = &quot;/replies/{txt}/{threadID}/{UID}&quot;)
+&nbsp;    Reply createNReply(@PathVariable String txt, @PathVariable int threadID, @PathVariable int UID){
+<b class="fc">&nbsp;        User user = userRepository.findById(UID);</b>
+<b class="fc">&nbsp;        Thread thread = threadRepository.findById(threadID);</b>
+<b class="fc">&nbsp;        Reply reply = new Reply(txt, thread, user);</b>
+<b class="fc">&nbsp;        replyRepository.save(reply);</b>
+<b class="fc">&nbsp;        user.addReply(reply);</b>
+<b class="fc">&nbsp;        thread.addReplies(reply);</b>
+<b class="fc">&nbsp;        threadRepository.save(thread);</b>
+<b class="fc">&nbsp;        userRepository.save(user);</b>
+<b class="fc">&nbsp;        return reply;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(path = &quot;/replies/{id}&quot;)
+&nbsp;    Reply updateReply(@PathVariable int id, @RequestBody Reply request){
+<b class="nc">&nbsp;        Reply day = replyRepository.findById(id);</b>
+<b class="nc">&nbsp;        if(day == null)</b>
+<b class="nc">&nbsp;            return null;</b>
+<b class="nc">&nbsp;        replyRepository.save(request);</b>
+<b class="nc">&nbsp;        return replyRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(path = &quot;/replies/{id}&quot;)
+&nbsp;    String deleteReply(@PathVariable int id) {
+<b class="nc">&nbsp;        replyRepository.deleteById(id);</b>
+<b class="nc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

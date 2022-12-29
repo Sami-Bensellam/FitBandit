@@ -1,0 +1,355 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > User</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309.Users</a>
+</div>
+
+<h1>Coverage Summary for Class: User (coms309.Users)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">User</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.2%
+  </span>
+  <span class="absValue">
+    (32/38)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.2%
+  </span>
+  <span class="absValue">
+    (41/47)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">User$HibernateProxy$KXSW68Yi</td>
+  </tr>
+  <tr>
+    <td class="name">User$HibernateProxy$OnoOvLhB</td>
+  </tr>
+  <tr>
+    <td class="name">User$HibernateProxy$PVkO0slv</td>
+  </tr>
+  <tr>
+    <td class="name">User$HibernateProxy$W7TpxDHl</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    84.2%
+  </span>
+  <span class="absValue">
+    (32/38)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.2%
+  </span>
+  <span class="absValue">
+    (41/47)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309.Users;
+&nbsp;
+&nbsp;import coms309.Replies.Reply;
+&nbsp;import coms309.Threads.Thread;
+&nbsp;import coms309.Workouts.Workout;
+&nbsp;import coms309.DietPlans.DietPlan;
+&nbsp;import coms309.Weeks.Week;
+&nbsp;import coms309.Days.*;
+&nbsp;
+&nbsp;import javax.persistence.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * @author Sami Bensellam
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;@Entity
+&nbsp;public class User {
+&nbsp;
+&nbsp;    /*
+&nbsp;     * The annotation @ID marks the field below as the primary key for the table created by springboot
+&nbsp;     * The @GeneratedValue generates a value if not already present, The strategy in this case is to start from 1 and increment for each table
+&nbsp;     */
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+&nbsp;    private int id;
+&nbsp;    private String userName;
+&nbsp;    private String password;
+&nbsp;    private String emailId;
+&nbsp;    private int Weight;
+&nbsp;
+&nbsp;    private int Height;
+&nbsp;    private int gain;
+&nbsp;    private int muscle;
+&nbsp;
+&nbsp;    private int age;
+&nbsp;    private boolean Gender;
+&nbsp;
+&nbsp;    private boolean isAdmin;
+&nbsp;
+&nbsp;    /*
+&nbsp;     * @OneToOne creates a relation between the current entity/table(Laptop) with the entity/table defined below it(User)
+&nbsp;     * cascade is responsible propagating all changes, even to children of the class Eg: changes made to laptop within a user object will be reflected
+&nbsp;     * in the database (more info : https://www.baeldung.com/jpa-cascade-types)
+&nbsp;     * @JoinColumn defines the ownership of the foreign key i.e. the user table will have a field called laptop_id
+&nbsp;     */
+&nbsp;
+&nbsp;    @OneToOne(cascade = CascadeType.ALL)
+&nbsp;    @JoinColumn(name = &quot;dietPlan_id&quot;)
+&nbsp;    private DietPlan dietPlan;
+&nbsp;
+&nbsp;    @ManyToMany
+&nbsp;    private List&lt;Workout&gt; workouts;
+&nbsp;
+&nbsp;    @OneToMany
+&nbsp;    private List&lt;Week&gt; weeks;
+&nbsp;
+&nbsp;    @OneToMany
+&nbsp;    private List&lt;Day&gt; days;
+&nbsp;
+&nbsp;    @OneToMany
+&nbsp;    private List&lt;Thread&gt; threads;
+&nbsp;
+&nbsp;    @OneToMany
+&nbsp;    private List&lt;Reply&gt; replies;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public User(String firstName, String lastName, String emailId, boolean isAdmin) {</b>
+<b class="fc">&nbsp;        this.userName = firstName;</b>
+<b class="fc">&nbsp;        this.password = lastName;</b>
+<b class="fc">&nbsp;        this.emailId = emailId;</b>
+<b class="fc">&nbsp;        this.isAdmin = true;</b>
+<b class="fc">&nbsp;        workouts = new ArrayList&lt;Workout&gt;();</b>
+<b class="fc">&nbsp;        weeks = new ArrayList&lt;Week&gt;();</b>
+<b class="fc">&nbsp;        days = new ArrayList&lt;Day&gt;();</b>
+<b class="fc">&nbsp;        threads = new ArrayList&lt;Thread&gt;();</b>
+<b class="fc">&nbsp;        replies = new ArrayList&lt;Reply&gt;();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public User() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // =============================== Getters and Setters for each field ================================== //
+&nbsp;
+&nbsp;    public int getId(){
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(int id){
+<b class="nc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String getUserName(){
+<b class="fc">&nbsp;        return userName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUserName(String userName){
+<b class="fc">&nbsp;        this.userName = userName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPassword(){
+<b class="fc">&nbsp;        return password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPassword(String password){
+<b class="fc">&nbsp;        this.password = password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getEmailId(){
+<b class="fc">&nbsp;        return emailId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEmailId(String emailId){
+<b class="fc">&nbsp;        this.emailId = emailId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean getAdmin(){
+<b class="fc">&nbsp;        return isAdmin;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAdmin(boolean isAdmin){
+<b class="fc">&nbsp;        this.isAdmin = isAdmin;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addWorkout(Workout workout){
+<b class="nc">&nbsp;        this.workouts.add(workout);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Day&gt; getDays() {
+<b class="fc">&nbsp;        return days;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDays(List&lt;Day&gt; days) {
+<b class="nc">&nbsp;        this.days = days;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public boolean isAdmin() {
+<b class="nc">&nbsp;        return isAdmin;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Week&gt; getWeeks() {
+<b class="fc">&nbsp;        return weeks;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setWeeks(List&lt;Week&gt; weeks) {
+<b class="nc">&nbsp;        this.weeks = weeks;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setWorkouts(List&lt;Workout&gt; workouts) {
+<b class="nc">&nbsp;        this.workouts = workouts;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Workout&gt; getWorkouts(){
+<b class="fc">&nbsp;        return workouts;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getWeight(){
+<b class="fc">&nbsp;        return Weight;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setWeight(int Weight){
+<b class="fc">&nbsp;        this.Weight = Weight;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDietPlan(DietPlan dietPlan) {
+<b class="fc">&nbsp;        this.dietPlan = dietPlan;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public DietPlan getDietPlan() {
+<b class="fc">&nbsp;        return dietPlan;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getHeight(){
+<b class="fc">&nbsp;        return Height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHeight(int Height){
+<b class="fc">&nbsp;        this.Height = Height;</b>
+&nbsp;    }
+&nbsp;    public int getGain(){
+<b class="fc">&nbsp;        return gain;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGain(int gain){
+<b class="fc">&nbsp;        this.gain = gain;</b>
+&nbsp;    }
+&nbsp;    public int getMuscle(){
+<b class="fc">&nbsp;        return muscle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMuscle(int muscle){
+<b class="fc">&nbsp;        this.muscle = muscle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean getGender(){
+<b class="fc">&nbsp;        return Gender;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGender(boolean Gender){
+<b class="fc">&nbsp;        this.Gender = Gender;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getAge() {
+<b class="fc">&nbsp;        return age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAge(int age) {
+<b class="fc">&nbsp;        this.age = age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Reply&gt; getReplies() {
+<b class="fc">&nbsp;        return replies;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Thread&gt; getThreads() {
+<b class="fc">&nbsp;        return threads;</b>
+&nbsp;    }
+&nbsp;    public void addThread(Thread thread){
+<b class="fc">&nbsp;        threads.add(thread);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addReply(Reply reply) {
+<b class="fc">&nbsp;        replies.add(reply);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

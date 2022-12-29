@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">coms309</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (coms309)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (40/40)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Main$$EnhancerBySpringCGLIB$$2eed11d9</td>
+  </tr>
+  <tr>
+    <td class="name">Main$$EnhancerBySpringCGLIB$$2eed11d9$$FastClassBySpringCGLIB$$22d92383</td>
+  </tr>
+  <tr>
+    <td class="name">Main$$EnhancerBySpringCGLIB$$954bf973</td>
+  </tr>
+  <tr>
+    <td class="name">Main$$EnhancerBySpringCGLIB$$954bf973$$FastClassBySpringCGLIB$$bb34cc35</td>
+  </tr>
+  <tr>
+    <td class="name">Main$$FastClassBySpringCGLIB$$27d7781d</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (40/40)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package coms309;
+&nbsp;
+&nbsp;import java.io.Console;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;import coms309.DietPlans.DietPlanRepository;
+&nbsp;import coms309.Threads.Thread;
+&nbsp;import coms309.Threads.ThreadRepository;
+&nbsp;import org.springframework.boot.CommandLineRunner;
+&nbsp;import org.springframework.boot.SpringApplication;
+&nbsp;import org.springframework.boot.autoconfigure.SpringBootApplication;
+&nbsp;import org.springframework.context.annotation.Bean;
+&nbsp;
+&nbsp;import coms309.Workouts.WorkoutRepository;
+&nbsp;import coms309.Workouts.Workout;
+&nbsp;import coms309.Users.User;
+&nbsp;import coms309.Users.UserRepository;
+&nbsp;import springfox.documentation.builders.PathSelectors;
+&nbsp;import springfox.documentation.builders.RequestHandlerSelectors;
+&nbsp;import springfox.documentation.spi.DocumentationType;
+&nbsp;import springfox.documentation.spring.web.plugins.Docket;
+&nbsp;import springfox.documentation.swagger2.annotations.EnableSwagger2;
+&nbsp;
+&nbsp;@SpringBootApplication
+&nbsp;@EnableSwagger2
+<b class="fc">&nbsp;class Main {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="fc">&nbsp;        SpringApplication.run(Main.class, args);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Bean
+&nbsp;    CommandLineRunner initUser(UserRepository userRepository, WorkoutRepository workoutRepository, ThreadRepository threadRepository) {
+<b class="fc">&nbsp;        return args -&gt; {</b>
+<b class="fc">&nbsp;            User user1 = new User(&quot;Admin&quot;, &quot;User&quot;, &quot;john@somemail.com&quot;, true);</b>
+<b class="fc">&nbsp;            userRepository.save(user1);</b>
+<b class="fc">&nbsp;            Thread thread1 = new Thread(&quot;Dieting chat&quot;, &quot;Rules:\n This is strictly about diet not misinformation allowed.&quot;,user1);</b>
+<b class="fc">&nbsp;            Thread thread2 = new Thread(&quot;Weightloss chat&quot;,&quot;Rules:\n This is strictly about diet not misinformation allowed.&quot;,user1);</b>
+<b class="fc">&nbsp;            Thread thread3 = new Thread(&quot;Weightdain chat&quot;,&quot;Rules:\n This is strictly about diet not misinformation allowed.&quot;,user1);</b>
+<b class="fc">&nbsp;            Thread thread4 = new Thread(&quot;Offtopic&quot;,&quot;Rules: \n its the wild west here go crazy&quot;,user1);</b>
+<b class="fc">&nbsp;            threadRepository.save(thread1);</b>
+<b class="fc">&nbsp;            threadRepository.save(thread2);</b>
+<b class="fc">&nbsp;            threadRepository.save(thread3);</b>
+<b class="fc">&nbsp;            threadRepository.save(thread4);</b>
+<b class="fc">&nbsp;            user1.addThread(thread1);</b>
+<b class="fc">&nbsp;            user1.addThread(thread2);</b>
+<b class="fc">&nbsp;            user1.addThread(thread3);</b>
+<b class="fc">&nbsp;            user1.addThread(thread4);</b>
+&nbsp;
+&nbsp;
+&nbsp;//            User user2 = new User(&quot;Micheal&quot;, &quot;Myers&quot;, &quot;idk@test.com&quot;, false);
+&nbsp;//            User user3 = new User(&quot;Serial&quot;, &quot;Killer&quot;, &quot;idk@test2.com&quot;, false);
+&nbsp;//
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;Aerobics&quot;,211,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;Stationary Bike&quot;,176,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;Stationary Bike medium effort&quot;,247,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;dusting&quot;,70,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;gardening&quot;,176,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;grocery shopping&quot;,106,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;hiking&quot;,211,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;house cleaning&quot;,106,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;jogging&quot;,247,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;running 12 minute miles&quot;,282,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;running 10 minute miles&quot;,352,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;running 7.5 minute miles&quot;,428,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;laundry, including folding clothes&quot;,70,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;mowing the lawn&quot;,141,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;brisk walking&quot;,141,&quot;cardio&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;weightlifting&quot;,106,&quot;resistance Training&quot;));</b>
+<b class="fc">&nbsp;            workoutRepository.save(new Workout(&quot;yoga&quot;,141,&quot;cardio&quot;));</b>
+&nbsp;
+&nbsp;//
+&nbsp;//
+&nbsp;//            user1.addWorkout(workoutRepository.findById(1));
+&nbsp;//            user1.addWorkout(workoutRepository.findById(2));
+&nbsp;//            user2.addWorkout(workoutRepository.findById(3));
+&nbsp;//            user2.addWorkout(workoutRepository.findById(4));
+&nbsp;////
+<b class="fc">&nbsp;            userRepository.save(user1);</b>
+&nbsp;//            userRepository.save(user2);
+&nbsp;//            userRepository.save(user3);
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        };
+&nbsp;   }
+&nbsp;    @Bean
+&nbsp;    public Docket myDocket() {
+<b class="fc">&nbsp;        return new Docket(DocumentationType.SWAGGER_2)</b>
+&nbsp;                //.apiInfo(apiInfo())
+<b class="fc">&nbsp;                .select()</b>
+&nbsp;                //.apis(RequestHandlerSelectors.basePackage(&quot;CyAuction&quot;))
+<b class="fc">&nbsp;                .apis(RequestHandlerSelectors.any())</b>
+<b class="fc">&nbsp;                .paths(PathSelectors.any())</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 16:36</div>
+</div>
+</body>
+</html>

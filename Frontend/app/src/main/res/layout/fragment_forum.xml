@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ForumFragment">
+
+    <TextView
+        android:id="@+id/forum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textAlignment="viewStart"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/forumInput"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forum"
+        android:background="@drawable/login_border"/>
+
+    <Button
+        android:id="@+id/forumPost"
+        android:layout_width="101dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="150dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumInput"
+        android:backgroundTint="#000000"
+        android:fontFamily="serif-monospace"
+        android:text="@string/post"
+        android:textColor="#FFFFFF"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/blankSpace"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginEnd="276dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumPost" />
+
+    <TextView
+        android:id="@+id/forumOption1"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:visibility="visible"
+        android:text="@string/forum"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forum"
+        android:background="@drawable/login_border"/>
+
+    <TextView
+        android:id="@+id/forumOption2"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:visibility="visible"
+        android:text="@string/forum"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumOption1"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/login_border"/>
+
+    <TextView
+        android:id="@+id/forumOption3"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:visibility="visible"
+        android:text="@string/forum"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumOption2"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/login_border"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
