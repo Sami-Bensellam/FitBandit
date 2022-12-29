@@ -1,8 +1,6 @@
-name: CI/CD
+name: ci-cd
 
-on:
-  release:
-    types: [ created ]
+on: [push]
 jobs:
   build:
     runs-on: self-hosted
