@@ -15,7 +15,7 @@ jobs:
       - name: Build with Maven
         run:
           cd Backend/hellopeople
-          mvn test
+          mvn -B package --file pom.xml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
