@@ -5,7 +5,7 @@ on:
     types: [ created ]
 jobs:
   build:
-    runs-on: amazonlinux2
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
