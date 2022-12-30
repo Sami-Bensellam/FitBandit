@@ -15,7 +15,7 @@ jobs:
       - name: Build with Maven
         run: |
           cd Backend/hellopeople
-          maven3/bin/mvn package
+          /home/ec2-user/maven3/bin/mvn package
   maven-test:
     runs-on: self-hosted
     steps:
@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: |
           cd Backend/hellopeople
-          maven3/bin/mvn test
+          /home/ec2-user/maven3/bin/mvn test
       - name: Save artifacts
         uses: actions/upload-artifact@v2
         with:
