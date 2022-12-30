@@ -14,6 +14,7 @@ jobs:
 
       - name: Build with Maven
         run: |
+          cd ../../
           cd Backend/hellopeople
           mvn package
   maven-test:
@@ -27,6 +28,7 @@ jobs:
           maven-version: '4.0.0-alpha-3'
       - name: Run tests
         run: |
+          cd ../../
           cd Backend/hellopeople
           mvn test
       - name: Save artifacts
