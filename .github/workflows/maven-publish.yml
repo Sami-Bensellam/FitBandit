@@ -18,6 +18,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifact
-          run:  cd ../../
-            - ls
-          path: Backend/hellopeople/target/*.jar
+          run:  |
+        cd ../../
+        for file in ./target/*.jar; do
+        java -jar "${file}"
+        done
+
