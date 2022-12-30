@@ -47,8 +47,6 @@ jobs:
           run: |
             cd Backend/hellopeople
             mvn package
-        - name: Deploy the application
-          run: |
             sudo mv target/*.jar /target/web-demo.jar
             sudo systemctl stop system-web-demo
             sudo systemctl start system-web-demo
