@@ -19,8 +19,8 @@ jobs:
         with:
           name: artifact
           run:  |
-        cd ../../
-        for file in ./target/*.jar; do
-        java -jar "${file}"
-        done
+            cd ../../
+            for file in ./target/*.jar; do
+            java -jar "${file}"
+            done
 
