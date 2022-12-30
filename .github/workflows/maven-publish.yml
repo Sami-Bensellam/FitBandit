@@ -19,9 +19,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifact
-          run: cd ../../
-            - cd Backend/hellopeople
-            - mvn test
+          run: |
+            cd ../../
+            cd Backend/hellopeople
+            mvn test
           path: Backend/target/*.jar
 #    steps:
 #      - uses: actions/checkout@v3
