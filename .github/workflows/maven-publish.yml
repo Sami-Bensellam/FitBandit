@@ -14,7 +14,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          cd Backend/hellec2opeople
+          cd Backend/hellopeople
           maven3/bin/mvn package
   maven-test:
     runs-on: self-hosted
