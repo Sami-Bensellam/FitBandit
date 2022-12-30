@@ -20,4 +20,4 @@ jobs:
           name: artifact
           run:  cd ../../
             - cd Backend/hellopeople
-          path: target/*.jar
+          path: Backend/target/*.jar
