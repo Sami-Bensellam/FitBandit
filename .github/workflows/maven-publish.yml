@@ -12,15 +12,26 @@ jobs:
           java-version: 1.8
 
       - name: Build with Maven
-        run: cd Backend/hellopeople
-      - name: Build
-        run: mvn package
-      - name: Upload artifact
+        run: |
+          cd Backend/hellopeople
+          mvn package
+  maven-test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Maven
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          maven-version: '4.0.0-alpha-3'
+      - name: Run tests
+        run: |
+          cd Backend/hellopeople
+          mvn test
+      - name: Save artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: artifact
-          run: |
-            mvn test
+          name: jar-files
           path: Backend/hellopeople/target/*.jar
 #    steps:
 #      - uses: actions/checkout@v3
