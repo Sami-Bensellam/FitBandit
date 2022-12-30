@@ -19,5 +19,5 @@ jobs:
         with:
           name: artifact
           run:  cd ../../
-            - cd Backend/hellopeople
+            - ls
           path: Backend/hellopeople/target/*.jar
