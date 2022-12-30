@@ -12,9 +12,9 @@ jobs:
           java-version: 1.8
 
       - name: Build with Maven
-        run:
-          - cd Backend/hellopeople
-          - mvn package
+        run: cd Backend/hellopeople
+      - name: Build
+        run: mvn package
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
