@@ -34,6 +34,25 @@ jobs:
         with:
           name: jar-files
           path: Backend/hellopeople/target/*.jar
+
+  maven-deploy:
+    runs-on: self-hosted
+    steps:
+        - uses: actions/checkout@v2
+        - name: Set up JDK
+          uses: actions/setup-java@v1
+          with:
+            java-version: 1.8
+        - name: Build and package the application
+          run: |
+            cd Backend/hellopeople
+            mvn package
+        - name: Deploy the application
+          run: |
+            sudo mv target/*.jar /target/web-demo.jar
+            sudo systemctl stop system-web-demo
+            sudo systemctl start system-web-demo
+
 #    steps:
 #      - uses: actions/checkout@v3
 #      - name: Set up JDK 11
