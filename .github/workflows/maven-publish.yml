@@ -13,15 +13,14 @@ jobs:
 
       - name: Build with Maven
         run: cd Backend/hellopeople
-          mvn package
+          - mvn package
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: artifact
           run: |
-            cd Backend/hellopeople
             mvn test
-          path: Backend/target/*.jar
+          path: Backend/hellopeople/target/*.jar
 #    steps:
 #      - uses: actions/checkout@v3
 #      - name: Set up JDK 11
