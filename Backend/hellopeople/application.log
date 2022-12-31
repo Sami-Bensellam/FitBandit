@@ -1,1 +1,33 @@
-2022-12-28 00:52:31.956  WARN 87221 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m28s774ms).
+2022-12-30 20:59:11.610  INFO 51264 --- [main] coms309.Main                             : Starting Main using Java 11.0.10 on Samis-MacBook-Air.local with PID 51264 (/Users/samibensellam/Desktop/gitFitBandit/FitBandit/Backend/hellopeople/target/classes started by samibensellam in /Users/samibensellam/Desktop/gitFitBandit/FitBandit/Backend/hellopeople)
+2022-12-30 20:59:11.628  INFO 51264 --- [main] coms309.Main                             : No active profile set, falling back to default profiles: default
+2022-12-30 20:59:13.436  INFO 51264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-30 20:59:13.538  INFO 51264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 7 JPA repository interfaces.
+2022-12-30 20:59:14.439  INFO 51264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-30 20:59:14.456  INFO 51264 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-30 20:59:14.457  INFO 51264 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-12-30 20:59:14.592  INFO 51264 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-30 20:59:14.593  INFO 51264 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2833 ms
+2022-12-30 20:59:14.906  INFO 51264 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-30 20:59:15.001  INFO 51264 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final
+2022-12-30 20:59:15.281  INFO 51264 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-30 20:59:15.437  INFO 51264 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-30 20:59:16.229  INFO 51264 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-30 20:59:16.298  INFO 51264 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2022-12-30 20:59:25.164  INFO 51264 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-30 20:59:25.187  INFO 51264 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-30 20:59:25.850  WARN 51264 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-30 20:59:26.518  INFO 51264 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6c4aba6c-4d57-4045-80a7-116cd1763f2a
+
+2022-12-30 20:59:26.629  INFO 51264 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@334ac669, org.springframework.security.web.context.SecurityContextPersistenceFilter@3c6e407, org.springframework.security.web.header.HeaderWriterFilter@6e8f3b76, org.springframework.security.web.authentication.logout.LogoutFilter@f3e6876, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f650dae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@61e4a072, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77430c79, org.springframework.security.web.session.SessionManagementFilter@65029fc, org.springframework.security.web.access.ExceptionTranslationFilter@18356d9e]
+2022-12-30 20:59:26.773  INFO 51264 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-12-30 20:59:27.039  INFO 51264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-30 20:59:27.661  INFO 51264 --- [main] coms309.Main                             : Started Main in 17.621 seconds (JVM running for 19.548)
+2022-12-30 20:59:53.155  INFO 51264 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-30 20:59:53.158  INFO 51264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-30 20:59:53.162  INFO 51264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-12-30 21:23:04.828  INFO 51264 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-12-30 21:23:04.847  INFO 51264 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-30 21:23:04.871  INFO 51264 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-30 21:23:04.916  INFO 51264 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
