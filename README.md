@@ -57,6 +57,12 @@ The game underwent rigorous testing, including unit, integration, and performanc
 ## Contributing
 Contributions are welcome. Fork the repository, make changes, and submit a pull request. We value bug reports, feature suggestions, and code improvements.
 
+## Team
+- Sami Bensellam
+- Abdelrahman Mohammed
+- Maxim Hjelmstad
+- Jake Garnett
+
 ## Acknowledgments
 Special thanks to the instructors and peers in COM S/SE 319 for their support and feedback, instrumental in shaping this project into a top-tier educational tool and engaging gaming experience.
 
